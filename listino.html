@@ -93,11 +93,13 @@
             
             let name = document.getElementById("name").value;
             let date = document.getElementById("date").value;
-            let emailRecipient = "fcutspa@gmail.com";
+            let emailRecipient1 = "fcutspa@gmail.com";
+            let emailRecipient2 = "altromail@gmail.com"; // Sostituire con la seconda mail
             let subject = `Prenotazione per ${name}`;
             let body = `Prenotazione avvenuta con successo per il giorno ${date}.`;
             
-            window.location.href = `mailto:${emailRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(`mailto:${emailRecipient1}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+            window.open(`mailto:${emailRecipient2}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
         });
     </script>
 </body>
