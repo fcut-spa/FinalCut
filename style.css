@@ -1,0 +1,264 @@
+/* RESET: Resetta i margini e padding predefiniti */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body generale */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Menu mobile */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 200px;
+    height: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.mobile-menu ul li {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.mobile-menu ul li a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Icona hamburger */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger-menu .bar {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    border-radius: 2px;
+}
+
+/* Hero Section */
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background: url('hero-background.jpg') no-repeat center center/cover;
+    text-align: center;
+    color: #000033;
+    padding: 0 30px;
+    border-radius: 15px;
+}
+
+#home h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#home p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#home .btn {
+    background-color: #3498db;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+#home .btn:hover {
+    background-color: #2980b9;
+}
+
+/* About Section */
+#about {
+    padding: 60px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+#about .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Testimonials Section */
+#testimonials {
+    padding: 60px 0;
+    background-color: #ecf0f1;
+}
+
+.testimonials .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.review {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    min-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.review:hover {
+    transform: scale(1.05);
+}
+
+.review p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.review strong {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.review span {
+    font-size: 1.2rem;
+    color: #f39c12;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 50px;
+}
+
+footer p {
+    font-size: 1.1rem;
+}
+
+/* Media Queries */
+
+/* Tablet Landscape e Dispositivi più piccoli */
+@media (max-width: 768px) {
+    .mobile-menu ul li a {
+        font-size: 1rem;
+    }
+
+    .review {
+        width: 45%;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo h1 {
+        font-size: 2rem;
+    }
+
+    .hamburger-menu {
+        margin-left: auto;
+    }
+
+    .mobile-menu ul li a {
+        font-size: 1rem;
+    }
+
+    .review {
+        width: 100%;
+    }
+}
