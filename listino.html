@@ -49,21 +49,14 @@
     <section id="booking">
         <div class="container">
             <h2>Prenota il tuo Servizio</h2>
-            <form id="bookingForm" action="https://formsubmit.co/fcutspa@gmail.com" method="POST">
-                <!-- Reindirizza alla pagina di conferma -->
-                <input type="hidden" name="_next" value="https://fcut-spa.github.io/FinalCut/conferma.html">
-                <!-- Evita spam bot -->
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Invia una copia dell'email anche all'utente -->
-                <input type="hidden" name="_autoresponse" value="Grazie per la tua prenotazione! Ti contatteremo presto.">
-
+            <form action="https://formsubmit.co/tuo@email.com" method="POST">
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
-                    <option value="Comunicare una Rottura">Comunicare una Rottura</option>
-                    <option value="Recupero e Riconsegna Oggetti">Recupero e Riconsegna Oggetti</option>
-                    <option value="Messaggio (solo testo)">Messaggio (solo testo)</option>
-                    <option value="Messaggio con Diritto di Risposta">Messaggio con Diritto di Risposta</option>
-                    <option value="Sportello Psicologico">Sportello Psicologico</option>
+                    <option value="comunicare_rottura">Comunicare una Rottura</option>
+                    <option value="recupero_oggetti">Recupero e Riconsegna Oggetti</option>
+                    <option value="messaggio">Messaggio (solo testo)</option>
+                    <option value="messaggio_risposta">Messaggio con Diritto di Risposta</option>
+                    <option value="sportello_psicologico">Sportello Psicologico</option>
                 </select>
 
                 <label for="name">Nome e Cognome</label>
@@ -74,6 +67,11 @@
 
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
+
+                <!-- Reindirizzamento alla pagina di conferma -->
+                <input type="hidden" name="_next" value="conferma.html">
+                <!-- Disattivazione del Captcha -->
+                <input type="hidden" name="_captcha" value="false">
 
                 <button type="submit">Prenota</button>
             </form>
