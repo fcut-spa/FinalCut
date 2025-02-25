@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="stilelistino.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
@@ -16,7 +15,6 @@
         </div>
     </header>
 
-    <!-- Sezione Listino Prezzi -->
     <section id="price-list">
         <div class="container">
             <h2>Il nostro Listino Prezzi</h2>
@@ -45,11 +43,10 @@
         </div>
     </section>
 
-    <!-- Sezione Prenotazione -->
     <section id="booking">
         <div class="container">
             <h2>Prenota il tuo Servizio</h2>
-            <form action="https://formsubmit.co/tuo@email.com" method="POST">
+            <form id="bookingForm" action="https://formsubmit.co/tuo@email.com" method="POST">
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
                     <option value="comunicare_rottura">Comunicare una Rottura</option>
@@ -68,12 +65,10 @@
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
 
-                <!-- Invia una copia all'utente -->
-                <input type="hidden" name="_cc" value="{email}">
+                <!-- Questo input verrà aggiornato con l'email dell'utente -->
+                <input type="hidden" id="ccEmail" name="_cc" value="">
 
-                <!-- Reindirizzamento alla pagina di conferma -->
                 <input type="hidden" name="_next" value="conferma.html">
-                <!-- Disattivazione del Captcha -->
                 <input type="hidden" name="_captcha" value="false">
 
                 <button type="submit">Prenota</button>
@@ -81,9 +76,15 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Final Cut | Tutti i diritti riservati.</p>
     </footer>
+
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            let userEmail = document.getElementById("email").value;
+            document.getElementById("ccEmail").value = userEmail;
+        });
+    </script>
 </body>
 </html>
