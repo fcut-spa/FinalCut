@@ -49,7 +49,7 @@
     <section id="booking">
         <div class="container">
             <h2>Prenota il tuo Servizio</h2>
-            <form id="bookingForm">
+            <form id="bookingForm" action="send_email.php" method="POST">
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
                     <option value="comunicare_rottura">Comunicare una Rottura</option>
@@ -78,29 +78,5 @@
         <p>&copy; 2025 Final Cut | Tutti i diritti riservati.</p>
     </footer>
 
-    <!-- Popup -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <h2>Prenotazione Avvenuta</h2>
-            <p>La tua prenotazione è stata effettuata con successo.</p>
-            <span class="close-btn" id="closeBtn">&times;</span>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById("bookingForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value;
-            let date = document.getElementById("date").value;
-            let emailRecipient1 = "fcutspa@gmail.com";
-            let emailRecipient2 = "altromail@gmail.com"; // Sostituire con la seconda mail
-            let subject = `Prenotazione per ${name}`;
-            let body = `Prenotazione avvenuta con successo per il giorno ${date}.`;
-            
-            window.open(`mailto:${emailRecipient1}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-            window.open(`mailto:${emailRecipient2}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-        });
-    </script>
 </body>
 </html>
