@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listino Prezzi</title>
-    <link rel="stylesheet" href="stilelistino.css">
+    <title>Listino Servizi</title>
+    <link rel="stylesheet" href="stilelistino.css"> <!-- Collega il CSS -->
 </head>
 <body>
+
     <header>
         <div class="container">
             <div class="logo">
@@ -15,38 +16,11 @@
         </div>
     </header>
 
-    <section id="price-list">
-        <div class="container">
-            <h2>Il nostro Listino Prezzi</h2>
-            <div class="price-box">
-                <div class="price-item">
-                    <h3>Comunicare una Rottura</h3>
-                    <p>€20</p>
-                </div>
-                <div class="price-item">
-                    <h3>Recupero e Riconsegna Oggetti</h3>
-                    <p>Da €50 a €120</p>
-                </div>
-                <div class="price-item">
-                    <h3>Messaggio (solo testo)</h3>
-                    <p>Da €70 a €140</p>
-                </div>
-                <div class="price-item">
-                    <h3>Messaggio con Diritto di Risposta</h3>
-                    <p>Da €80 a €160</p>
-                </div>
-                <div class="price-item">
-                    <h3>Sportello Psicologico</h3>
-                    <p>€50 all'ora</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="booking">
         <div class="container">
-            <h2>Prenota il tuo Servizio</h2>
-            <form id="bookingForm" action="https://formsubmit.co/tuo@email.com" method="POST">
+            <h2>Prenota un Servizio</h2>
+
+            <form id="bookingForm">
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
                     <option value="comunicare_rottura">Comunicare una Rottura</option>
@@ -65,26 +39,41 @@
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
 
-                <!-- Questo input verrà aggiornato con l'email dell'utente -->
-                <input type="hidden" id="ccEmail" name="_cc" value="">
-
-                <input type="hidden" name="_next" value="conferma.html">
-                <input type="hidden" name="_captcha" value="false">
-
                 <button type="submit">Prenota</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Final Cut | Tutti i diritti riservati.</p>
+        <p>&copy; 2025 Final Cut - Tutti i diritti riservati</p>
     </footer>
 
     <script>
         document.getElementById("bookingForm").addEventListener("submit", function(event) {
-            let userEmail = document.getElementById("email").value;
-            document.getElementById("ccEmail").value = userEmail;
+            event.preventDefault(); // Evita il comportamento predefinito del form
+
+            const formData = new FormData(this);
+            const userEmail = formData.get("email"); // Ottiene l'email dell'utente
+
+            // 1️⃣ Invia la mail a TE
+            fetch("https://formsubmit.co/tuo@email.com", {
+                method: "POST",
+                body: formData
+            });
+
+            // 2️⃣ Invia la mail all'UTENTE con un messaggio personalizzato
+            fetch("https://formsubmit.co/" + userEmail, {
+                method: "POST",
+                body: new URLSearchParams({
+                    _subject: "Conferma Prenotazione",
+                    message: `Ciao ${formData.get("name")},\n\nLa tua prenotazione per il servizio "${formData.get("service")}" è confermata per il giorno ${formData.get("date")}.\n\nGrazie per aver scelto Final Cut!`
+                })
+            });
+
+            // 3️⃣ Reindirizza alla pagina di conferma
+            window.location.href = "conferma.html";
         });
     </script>
+
 </body>
 </html>
