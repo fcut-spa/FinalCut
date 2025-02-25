@@ -65,8 +65,8 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
 
-                <label for="phone">Telefono</label>
-                <input type="text" id="phone" name="phone">
+                <label for="date">Data di Prenotazione</label>
+                <input type="date" id="date" name="date" required>
 
                 <button type="submit">Prenota</button>
             </form>
@@ -87,6 +87,18 @@
         </div>
     </div>
 
-    <script src="popup.js"></script>
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value;
+            let date = document.getElementById("date").value;
+            let emailRecipient = "fcutspa@gmail.com";
+            let subject = `Prenotazione per ${name}`;
+            let body = `Prenotazione avvenuta con successo per il giorno ${date}.`;
+            
+            window.location.href = `mailto:${emailRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    </script>
 </body>
 </html>
