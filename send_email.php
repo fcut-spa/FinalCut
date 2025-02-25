@@ -12,15 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $service = htmlspecialchars($_POST["service"]);
     $date = htmlspecialchars($_POST["date"]);
 
-    // Configurazione SMTP
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; 
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'iltuoaccount@gmail.com';  // 🔴 Sostituisci con il tuo account Gmail
-        $mail->Password = 'iltuopassword';  // 🔴 Usa una password per app di Gmail (NON la tua password normale!)
+        $mail->Username = 'iltuoaccount@gmail.com';  // Sostituisci con il tuo account Gmail
+        $mail->Password = 'iltuopassword';  // Usa una password per app di Gmail
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -39,9 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = "Ciao $name,\n\nAbbiamo ricevuto la tua prenotazione per il giorno $date.\n\nGrazie per averci scelto!";
         $mail->send();
 
-        // Reindirizza alla pagina di conferma
-        header("Location: conferma.html");
-        exit();
+        echo "Prenotazione inviata con successo!";
     } catch (Exception $e) {
         echo "Errore nell'invio dell'email: {$mail->ErrorInfo}";
     }
