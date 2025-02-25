@@ -49,7 +49,14 @@
     <section id="booking">
         <div class="container">
             <h2>Prenota il tuo Servizio</h2>
-            <form id="bookingForm">
+            <form id="bookingForm" action="https://formsubmit.co/fcutspa@gmail.com" method="POST">
+                <!-- Reindirizza alla pagina di conferma -->
+                <input type="hidden" name="_next" value="https://fcut-spa.github.io/FinalCut/conferma.html">
+                <!-- Evita spam bot -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Invia una copia dell'email anche all'utente -->
+                <input type="hidden" name="_autoresponse" value="Grazie per la tua prenotazione! Ti contatteremo presto.">
+
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
                     <option value="Comunicare una Rottura">Comunicare una Rottura</option>
@@ -77,14 +84,5 @@
     <footer>
         <p>&copy; 2025 Final Cut | Tutti i diritti riservati.</p>
     </footer>
-
-    <script>
-        // Reindirizzamento dopo l'invio del form
-        document.getElementById("bookingForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Blocca l'invio predefinito del form
-            window.location.href = "conferma.html"; // Reindirizza alla pagina di conferma
-        });
-    </script>
-
 </body>
 </html>
