@@ -18,28 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'fcutspa@gmail.com';  // Usa l'email corretta
-        $mail->Password = 'TUA_PASSWORD_APP';  // Usa una password per app di Gmail
+        $mail->Username = 'fcutspa@gmail.com';  // Modifica con il tuo indirizzo Gmail
+        $mail->Password = 'TUA_PASSWORD_APP';   // Devi usare una Password per le App di Google!
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
+        $mail->CharSet = 'UTF-8';
 
-        // Email per l'amministratore
+        // **Email all'amministratore**
         $mail->setFrom('fcutspa@gmail.com', 'Final Cut');
-        $mail->addAddress('fcutspa@gmail.com'); // Email dell'amministratore
-        $mail->Subject = "Prenotazione per $name";
-        $mail->Body = "Prenotazione ricevuta per il giorno $date.\nServizio scelto: $service.";
+        $mail->addAddress('fcutspa@gmail.com');  // L'email dell'amministratore
+        $mail->Subject = "Nuova Prenotazione da $name";
+        $mail->Body = "Hai ricevuto una nuova prenotazione:\n\nNome: $name\nEmail: $email\nServizio: $service\nData: $date";
 
-        $mail->send();
+        $mail->send(); // Invia la mail all'amministratore
 
-        // Email di conferma all'utente
+        // **Email di conferma all'utente**
         $mail->clearAddresses();
-        $mail->addAddress($email);
+        $mail->addAddress($email);  // Invia all'utente
         $mail->Subject = "Conferma Prenotazione - Final Cut";
-        $mail->Body = "Ciao $name,\n\nLa tua prenotazione per il servizio '$service' è stata registrata con successo per il giorno $date.\n\nGrazie per aver scelto Final Cut!";
+        $mail->Body = "Ciao $name,\n\nAbbiamo ricevuto la tua prenotazione per il servizio '$service' in data $date.\n\nGrazie per aver scelto Final Cut!";
 
-        $mail->send();
+        $mail->send(); // Invia la mail all'utente
 
-        // Reindirizzamento alla pagina di conferma
+        // **Reindirizza alla pagina di conferma**
         header("Location: conferma.html");
         exit();
     } catch (Exception $e) {
