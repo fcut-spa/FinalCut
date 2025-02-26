@@ -71,8 +71,11 @@
                 <!-- Email di notifica a fcutspa@gmail.com -->
                 <input type="hidden" name="_email" value="fcutspa@gmail.com">
 
-                <!-- Invia una copia della mail all'utente -->
-                <input type="hidden" name="_cc" value="{email}">
+                <!-- Invia una risposta automatica all'utente -->
+                <input type="hidden" name="_replyto" value="{email}">
+
+                <!-- Messaggio di conferma che riceverà l'utente -->
+                <input type="hidden" name="_autoresponse" value="Grazie per la tua prenotazione con Final Cut! Ti contatteremo a breve per confermare il servizio.">
 
                 <!-- Reindirizzamento alla pagina di conferma -->
                 <input type="hidden" name="_redirect" value="https://fcut-spa.github.io/FinalCut/conferma.html">
