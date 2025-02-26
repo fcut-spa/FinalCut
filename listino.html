@@ -68,6 +68,12 @@
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
 
+                <!-- Email di notifica a fcutspa@gmail.com -->
+                <input type="hidden" name="_email" value="fcutspa@gmail.com">
+
+                <!-- Invia una copia della mail all'utente -->
+                <input type="hidden" name="_cc" value="{email}">
+
                 <!-- Reindirizzamento alla pagina di conferma -->
                 <input type="hidden" name="_redirect" value="https://fcut-spa.github.io/FinalCut/conferma.html">
 
