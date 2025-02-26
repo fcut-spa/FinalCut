@@ -49,7 +49,7 @@
     <section id="booking">
         <div class="container">
             <h2>Prenota il tuo Servizio</h2>
-            <form action="https://getform.io/f/bllyzgeb" method="POST">
+            <form action="https://formsubmit.co/fcutspa@gmail.com" method="POST">
                 <label for="service">Seleziona il Servizio</label>
                 <select id="service" name="service" required>
                     <option value="comunicare_rottura">Comunicare una Rottura</option>
@@ -68,17 +68,20 @@
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
 
-                <!-- Email di notifica a fcutspa@gmail.com -->
-                <input type="hidden" name="_email" value="fcutspa@gmail.com">
+                <!-- Invio copia della mail all'utente -->
+                <input type="hidden" name="_replyto" value="{{email}}">
 
-                <!-- Invia una risposta automatica all'utente -->
-                <input type="hidden" name="_replyto" value="{email}">
-
-                <!-- Messaggio di conferma che riceverà l'utente -->
+                <!-- Risposta automatica all'utente -->
                 <input type="hidden" name="_autoresponse" value="Grazie per la tua prenotazione con Final Cut! Ti contatteremo a breve per confermare il servizio.">
 
+                <!-- Personalizzazione del messaggio -->
+                <input type="hidden" name="_template" value="table">
+
                 <!-- Reindirizzamento alla pagina di conferma -->
-                <input type="hidden" name="_redirect" value="https://fcut-spa.github.io/FinalCut/conferma.html">
+                <input type="hidden" name="_next" value="https://fcut-spa.github.io/FinalCut/conferma.html">
+
+                <!-- Disattivazione del Captcha -->
+                <input type="hidden" name="_captcha" value="false">
 
                 <button type="submit">Prenota</button>
             </form>
