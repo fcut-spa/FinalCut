@@ -68,8 +68,18 @@
                 <label for="date">Data di Prenotazione</label>
                 <input type="date" id="date" name="date" required>
 
+                <!-- Invio copia della mail all'utente -->
+                <input type="hidden" name="_cc" value="{email}">
+
+                <!-- Risposta automatica all'utente -->
+                <input type="hidden" name="_autoresponse" value="Grazie per la tua prenotazione con Final Cut! Ti contatteremo a breve per confermare il servizio.">
+
+                <!-- Personalizzazione del messaggio -->
+                <input type="hidden" name="_template" value="table">
+
                 <!-- Reindirizzamento alla pagina di conferma -->
-                <input type="hidden" name="_next" value="conferma.html">
+                <input type="hidden" name="_next" value="https://fcut-spa.github.io/FinalCut/conferma.html">
+
                 <!-- Disattivazione del Captcha -->
                 <input type="hidden" name="_captcha" value="false">
 
