@@ -16,6 +16,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
 /* Contenitore principale */
@@ -24,9 +25,21 @@ body {
     background-color: #fff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     width: 100%;
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Aggiunto effetto di fade-in */
+}
+
+/* Animazione per il fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Titolo */
@@ -34,6 +47,20 @@ h2 {
     font-size: 2rem;
     color: #4caf50;
     margin-bottom: 20px;
+    font-weight: 600;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Animazione per il titolo */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Paragrafo di conferma */
@@ -41,6 +68,7 @@ p {
     font-size: 1.2rem;
     color: #666;
     margin-bottom: 30px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Link di ritorno alla home */
@@ -48,15 +76,21 @@ a {
     display: inline-block;
     font-size: 1rem;
     text-decoration: none;
-    color: #4caf50;
-    background-color: #fff;
-    padding: 10px 20px;
-    border: 2px solid #4caf50;
+    color: #fff;
+    background-color: #4caf50;
+    padding: 12px 25px;
     border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Effetto hover sul link */
 a:hover {
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+/* Effetto focus sul link */
+a:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
